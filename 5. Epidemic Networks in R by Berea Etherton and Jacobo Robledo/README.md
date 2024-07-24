@@ -194,3 +194,83 @@ knitr::include_graphics("sir_model_simulation.gif")
 ```
 
 ![](sir_model_simulation.gif)<!-- -->
+
+## Simulations
+
+``` r
+library(igraph)
+SI_adj_matrix<-matrix(c(0,1,1,0,0,0,0,
+                        0,0,1,1,0,0,0,
+                        0,1,0,1,0,0,0,
+                        0,1,1,0,0,0,0,
+                        0,0,0,1,0,1,0,
+                        0,0,1,0,0,0,1,
+                        0,0,0,0,0,1,0), nrow=7,ncol=7)
+SI_adj_matrix<-graph_from_adjacency_matrix(SI_adj_matrix)
+plot(SI_adj_matrix, directed=TRUE)
+```
+
+![](README_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
+
+``` r
+prob_disease_movement<-0.5
+
+disease_start_node<-sample(0:7,1) #which node has disease
+
+#if the disease starts at Node 1 or Node 5, disease will not move in this
+#directed networks
+
+infected <- rep(FALSE, vcount(SI_adj_matrix))
+infected[disease_start_node] <- TRUE
+infected
+```
+
+    ## [1] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
+
+``` r
+epidemic_time_steps<-10 #how many time steps is this simulation
+
+simulate_step <- function(g, infected, prob_disease_movement) { #this function simulates disese 
+  #expansion across the adjacency matrix 
+  new_infected <- infected
+  for (node in 1:vcount(SI_adj_matrix)) {
+    if (infected[node]) {
+      neighbors <- neighbors(SI_adj_matrix, node, mode = "out")
+      for (neighbor in neighbors) {
+        if (!infected[neighbor] && runif(1) < prob_disease_movement) {
+          new_infected[neighbor] <- TRUE
+        }
+      }
+    }
+  }
+  return(new_infected)
+}
+
+for (i in 1:epidemic_time_steps) {
+  infected <- simulate_step(g, infected, prob_disease_movement)
+  print(infected)  # Print infection status at each time step
+}
+```
+
+    ## [1] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
+    ## [1]  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE
+    ## [1]  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE
+    ## [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE
+    ## [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE
+    ## [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+    ## [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+    ## [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+    ## [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+    ## [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+
+``` r
+V(SI_adj_matrix)$color <- ifelse(infected, "red", "green")
+plot(SI_adj_matrix, vertex.label=1:vcount(SI_adj_matrix), main="Disease Spread Simulation")
+```
+
+![](README_files/figure-gfm/unnamed-chunk-2-2.png)<!-- -->
+
+``` r
+#try again with new starting nodes or different probabilities, starting nodes,
+#and different time steps to simulate epidemics across various scenarios
+```
