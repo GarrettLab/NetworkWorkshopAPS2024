@@ -188,14 +188,14 @@ p <- ggplot(simulation_results, aes(x = time)) +
 ```
 
 
-
 ```{r}
 knitr::include_graphics("sir_model_simulation.gif")
 ```
 
+
 ## Simulations
 
-```{r}
+```{r SI Modeling in Networks}
 library(igraph)
 SI_adj_matrix<-matrix(c(0,1,1,0,0,0,0,
                         0,0,1,1,0,0,0,
@@ -246,3 +246,4 @@ plot(SI_adj_matrix, vertex.label=1:vcount(SI_adj_matrix), main="Disease Spread S
 #try again with new starting nodes or different probabilities, starting nodes,
 #and different time steps to simulate epidemics across various scenarios
 ```
+

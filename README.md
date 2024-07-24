@@ -1,5 +1,5 @@
 ﻿# WORKSHOP: Network Analysis in Plant Pathology Research: Disentangling Complex Data
-#### Saturday, July 27 1:00 PM – 5:00 PM CDT
+#### Saturday, July 27 1:00 PM – 5:00 PM CDT - Plant Health 2024
 
 Networks play a crucial role in plant pathology and have broad applications in understanding genetics, microbiome science, social systems, and epidemiology. A network comprises nodes and links that represent various relationships. For instance, in a geographic surveillance context, nodes would indicate locations or host populations in the surveillance system, while links would represent the potential pathogen spread between nodes. Analyzing network structures can be useful for understanding pathogen spread patterns in a landscape. Similarly, a network analysis of plant-associated microbiomes enables understanding of potential relationships among observed microbes/pathogens, generating hypotheses about microbial interactions in relation to plant health. 
 
