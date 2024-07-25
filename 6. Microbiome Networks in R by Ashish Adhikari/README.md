@@ -118,3 +118,53 @@ plot(net.grph,
      vertex.label.family="Times New Roman",
      vertex.label.font=0.5)
 ```
+
+```{r}
+
+# Load necessary library
+library(igraph)
+
+# Assume net.grph is your network graph object
+net <- net.grph
+
+# Perform Walktrap community detection
+wt <- walktrap.community(net)
+
+# Get cluster memberships
+membership <- membership(wt)
+
+# Get the size of each cluster
+cluster_sizes <- sizes(wt)
+
+# Identify the 5 largest clusters
+top_clusters <- order(cluster_sizes, decreasing = TRUE)[1:5]
+
+# Assign colors to the 5 largest clusters
+cluster_colors <- rainbow(5)
+
+# Color nodes based on cluster membership
+V(net)$color <- "gray"  # Default color for smaller clusters
+for (i in 1:5) {
+  cluster_indices <- which(membership == top_clusters[i])
+  if (length(cluster_indices) > 0) {
+    V(net)$color[cluster_indices] <- cluster_colors[i]
+  }
+}
+
+# Calculate hub scores for keystone taxa identification
+net_hs <- hub_score(net)$vector
+
+# Highlight keystone taxa by increasing their size
+V(net)$size <- 5  # Default size
+for (i in 1:5) {
+  cluster_indices <- which(membership == top_clusters[i])
+  if (length(cluster_indices) > 0) {
+    keystone_node <- cluster_indices[which.max(net_hs[cluster_indices])]
+    V(net)$size[keystone_node] <- 10  # Double the size for keystone taxa
+  }
+}
+
+# Plot the graph to visualize the node sizes
+plot(net, vertex.color = V(net)$color, vertex.size = V(net)$size)
+
+```
