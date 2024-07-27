@@ -6,7 +6,7 @@
 install.packages(c("tidyverse", "igraph", "ggraph", "ggplot2", "deSolve", "gganimate", "viridis", "geohabnet", "terra", "geosphere", "Cairo", "gifski"))
 ```
 
-#### If you have more experience with R you could play with this netwoerk visualizations while we do the introduction to R:
+#### If you have more experience with R you could play with this review of network visualization while we do the introduction to R:
 [Visuals](https://kateto.net/network-visualization)
 
 
