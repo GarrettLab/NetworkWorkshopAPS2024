@@ -1,7 +1,7 @@
 README.md
 ================
 Jacobo Robledo
-2024-07-24
+2024-07-27
 
 ## SIR Modeling:
 
@@ -100,6 +100,12 @@ calculates its average degree. *Degree Distribution:* Plots the degree
 distribution histograms for the small-world and scale-free networks to
 analyze their structure.
 
+``` r
+#------Epidemic Networks-------#
+
+library(igraph)
+```
+
     ## 
     ## Attaching package: 'igraph'
 
@@ -111,9 +117,38 @@ analyze their structure.
     ## 
     ##     union
 
-![](README_files/figure-gfm/pressure-1.png)<!-- -->![](README_files/figure-gfm/pressure-2.png)<!-- -->
+``` r
+# Random Network
+num_nodes <- 20
+prob_of_connections <- 0.1
+random_network <- erdos.renyi.game(n = num_nodes, p = prob_of_connections,
+                                   type = "gnp", directed = FALSE)
+plot(random_network,
+     vertex.size = 20, vertex.color = "yellow",
+     vertex.label.cex = 0.8, edge.curved = FALSE)
+```
+
+![](README_files/figure-gfm/pressure-1.png)<!-- -->
+
+``` r
+# Small World Network
+small_world <- graph(c(1,2,2,3,3,1,1,4,4,5,5,1,1,6,1,7), directed = FALSE)
+plot(small_world)
+```
+
+![](README_files/figure-gfm/pressure-2.png)<!-- -->
+
+``` r
+# Calculate the average local transitivity (clustering coefficient)
+(1/7) * sum(transitivity(small_world, type = "local"), na.rm = TRUE)
+```
 
     ## [1] 0.5904762
+
+``` r
+# Scale-Free Network
+scale_free_network <- barabasi.game(n = 20, m = 2, directed = FALSE)
+```
 
     ## Warning: `barabasi.game()` was deprecated in igraph 2.0.0.
     ## ℹ Please use `sample_pa()` instead.
@@ -121,11 +156,37 @@ analyze their structure.
     ## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
     ## generated.
 
+``` r
+# Plot the scale-free network
+plot(scale_free_network,
+     vertex.size = 20,
+     vertex.color = "yellow", vertex.label.cex = 0.8,
+     edge.arrow.size = 0.5,
+     edge.curved = FALSE)
+```
+
 ![](README_files/figure-gfm/pressure-3.png)<!-- -->
+
+``` r
+# Optional: Calculate and print the average degree of the network
+avg_degree <- mean(degree(scale_free_network))
+avg_degree
+```
 
     ## [1] 3.7
 
-![](README_files/figure-gfm/pressure-4.png)<!-- -->![](README_files/figure-gfm/pressure-5.png)<!-- -->
+``` r
+# Look at the degree distribution of the networks
+hist(degree(small_world))
+```
+
+![](README_files/figure-gfm/pressure-4.png)<!-- -->
+
+``` r
+hist(degree(scale_free_network))
+```
+
+![](README_files/figure-gfm/pressure-5.png)<!-- -->
 
 ## Simulation of Epidemic Spread:
 
@@ -210,7 +271,7 @@ SI_adj_matrix<-graph_from_adjacency_matrix(SI_adj_matrix)
 plot(SI_adj_matrix, directed=TRUE)
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
+![](README_files/figure-gfm/SI%20Modeling%20in%20Networks-1.png)<!-- -->
 
 ``` r
 prob_disease_movement<-0.5
@@ -252,11 +313,11 @@ for (i in 1:epidemic_time_steps) {
 }
 ```
 
-    ## [1] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
-    ## [1]  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE
-    ## [1]  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE
+    ## [1] FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE
+    ## [1]  TRUE  TRUE  TRUE  TRUE FALSE  TRUE FALSE
     ## [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE
-    ## [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE
+    ## [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+    ## [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE
     ## [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE
     ## [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE
     ## [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE
@@ -268,7 +329,7 @@ V(SI_adj_matrix)$color <- ifelse(infected, "red", "green")
 plot(SI_adj_matrix, vertex.label=1:vcount(SI_adj_matrix), main="Disease Spread Simulation")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-2-2.png)<!-- -->
+![](README_files/figure-gfm/SI%20Modeling%20in%20Networks-2.png)<!-- -->
 
 ``` r
 #try again with new starting nodes or different probabilities, starting nodes,
