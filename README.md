@@ -32,6 +32,10 @@ For more information, go to our website: [www.garrettlab.com](http://www.garrett
 
 ### 3. Introduction to R by Romaric Armel Mouafo Tchinda
 
+#### If you have more experience with R you could play with this review of network visualization by Katya Ognyanova while we do the introduction to R:
+[Visuals](https://kateto.net/network-visualization)
+
+
 - Get started in R and RStudio
 - Vectors and matrices
 - Introduce packages – tidyverse (and the others)
