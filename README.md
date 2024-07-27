@@ -10,9 +10,9 @@ For more information, go to our website: [www.garrettlab.com](http://www.garrett
 ## Content of the workshop:
 ### 1. Introduction to workshop and introductions by Karen Garrett
 
--Introducing the workshop and teachers
+- Introducing the workshop and teachers 
 
--Introductions by workshop participants
+- Introductions by workshop participants
 
 ### 2. Introduction to Networks by Aaron Plex Sulá
 
