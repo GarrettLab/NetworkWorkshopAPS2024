@@ -6,6 +6,10 @@
 install.packages(c("tidyverse", "igraph", "ggraph", "ggplot2", "deSolve", "gganimate", "viridis", "geohabnet", "terra", "geosphere", "Cairo", "gifski"))
 ```
 
+#### If you have more experience with R you could play with this netwoerk visualizations while we do the introduction to R:
+[Visuals](https://kateto.net/network-visualization)
+
+
 Networks play a crucial role in plant pathology and have broad applications in understanding genetics, microbiome science, social systems, and epidemiology. A network comprises nodes and links that represent various relationships. For instance, in a geographic surveillance context, nodes would indicate locations or host populations in the surveillance system, while links would represent the potential pathogen spread between nodes. Analyzing network structures can be useful for understanding pathogen spread patterns in a landscape. Similarly, a network analysis of plant-associated microbiomes enables understanding of potential relationships among observed microbes/pathogens, generating hypotheses about microbial interactions in relation to plant health. 
 
 This workshop will equip participants with the skills to interpret network analysis and hands-on experience in network analysis. The key learning objectives include (1) general understanding of fundamental concepts in network science and (2) practical proficiency in network analysis in R. Participants will engage with examples such as microbiome networks, epidemic networks, and technology spread networks. The workshop will leverage the R programming environment, offering a concise introduction to R. 
