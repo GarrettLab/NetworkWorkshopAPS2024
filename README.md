@@ -15,7 +15,10 @@ For more information, go to our website: [www.garrettlab.com](http://www.garrett
 
 ### 2. Introduction to Networks by Aaron Plex Sulá
 
-ADD INFO
+ -  What is a network
+ -	Networks in plant pathology
+ -	Node centrality measures
+ -	Other fascinating topics with network analysis, including geohabnet
 
 
 ### 3. Introduction to R by Romaric Armel Mouafo Tchinda
