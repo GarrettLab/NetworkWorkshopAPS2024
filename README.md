@@ -11,6 +11,7 @@ For more information, go to our website: [www.garrettlab.com](http://www.garrett
 ### 1. Introduction to workshop and introductions by Karen Garrett
 
 -Introducing the workshop and teachers
+
 -Introductions by workshop participants
 
 ### 2. Introduction to Networks by Aaron Plex Sulá
@@ -50,4 +51,5 @@ ADD INFO
 ### 7. Rapid Risk assessment to support Mitigation of diseases and pests (R2M) toolbox by Karen Garrett
 
 -Overview of R2M toolbox and its applications using network analysis
+
 -Final points from participants
