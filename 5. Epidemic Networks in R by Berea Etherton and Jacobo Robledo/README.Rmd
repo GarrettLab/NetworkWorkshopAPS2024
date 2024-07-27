@@ -81,7 +81,7 @@ R_0
 *Scale-Free Network:* Creates and plots a scale-free network using the Barabási–Albert model and calculates its average degree.
 *Degree Distribution:* Plots the degree distribution histograms for the small-world and scale-free networks to analyze their structure.
 
-```{r pressure, echo=FALSE}
+```{r pressure}
 
 #------Epidemic Networks-------#
 
