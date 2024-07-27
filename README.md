@@ -28,15 +28,18 @@ For more information, go to our website: [www.garrettlab.com](http://www.garrett
 
 ### 3. Introduction to R by Romaric Armel Mouafo Tchinda
 
-
-ADD INFO
-
-
+- Get started in R and RStudio
+- Vectors and matrices
+- Introduce packages – tidyverse (and the others)
+- Using tidyverse
 
 ### 4. Networks in R by Romaric Armel Mouafo Tchinda and Aaron Plex Sulá
 
-ADD INFO
-
+- Intro to igraph and ggraph
+- Centrality measures
+- Plotting networks with ggraph highlight
+- Clusters
+- geohabnet with toy example (and provide code for real example)
 
 ### 5. Epidemic Networks in R by Berea Etherton and Jacobo Robledo
 
