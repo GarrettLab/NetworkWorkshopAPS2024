@@ -53,7 +53,12 @@ This directory contains the materials for Session 5. In this session, we will ex
 
 ### 6. Microbiome Networks in R by Ashish Adhikari
 
-ADD INFO
+- Understand and interpret microbiome networks
+- Understand features and algorithm used
+- Usefulness in context of plant pathology
+- Build microbiome network in R
+
+
 
 ### 7. Rapid Risk assessment to support Mitigation of diseases and pests (R2M) toolbox by Karen Garrett
 
