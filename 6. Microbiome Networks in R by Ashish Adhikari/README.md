@@ -168,3 +168,45 @@ for (i in 1:5) {
 plot(net, vertex.color = V(net)$color, vertex.size = V(net)$size)
 
 ```
+```{r}
+tax <- read.csv(file.choose(), header = TRUE, check.names = TRUE)
+library(dplyr)
+taxonomy_data <- tax %>%
+  mutate(Names = paste(Family, Genus, sep = "_"))
+
+
+View(taxonomy_data)
+# Assuming the taxonomy data contains two columns: "OTU_ID" and "Taxonomy"
+# "OTU_ID" should match with the node names in your network
+
+names(taxonomy_data)[1] <- "OTU"
+# Create a mapping from OTU to Taxonomy
+taxonomy_mapping <- setNames(taxonomy_data$Names, taxonomy_data$OTU)
+
+# Replace node names with taxonomy names
+node_names <- V(net)$name
+# Replace node names with taxonomy names using the mapping
+# Replace node names with taxonomy names using the mapping
+taxonomy_names <- sapply(node_names, function(node) {
+  if (node %in% names(taxonomy_mapping)) {
+    return(taxonomy_mapping[[node]])
+  } else {
+    return(node)  # Keep the original node name if not found in the mapping
+  }
+})
+
+# Assign taxonomy names to the nodes in the network
+V(net)$name <- taxonomy_names
+
+# Now, your network nodes have been replaced with taxonomy names
+
+plot(net,
+     vertex.frame.color = "black",
+     edge.curved = FALSE,
+     edge.width = 1.5,
+     edge.color = ifelse(edgew < 0, "red", "blue"),
+     vertex.label.color = "blue",
+     vertex.label.family = "Times New Roman",
+     vertex.label.font = 0.5,
+     main = "Network with Clusters and Keystone Taxa")
+```
