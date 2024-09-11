@@ -54,7 +54,7 @@ library(SpiecEasi)
 
 ```{r}
 # SparCC network
-#sparcc.matrix <- sparcc(otu.table.filter)
+#sparcc.matrix <- 
 
 #this will take time may be hours depending on data size
 
@@ -62,7 +62,7 @@ library(SpiecEasi)
 
 ```{r}
 # Load the sparcc results
-sparcc.matrix <- readRDS("sparcc_results.rds")
+sparcc.matrix <- 
 ```
 
 ```{r}
@@ -70,7 +70,7 @@ sparcc.matrix <- readRDS("sparcc_results.rds")
 sparcc.cutoff <- 0.5
 
 #changing to 0 and 1
-sparcc.adj <- ifelse(abs(sparcc.matrix$Cor) >= sparcc.cutoff, 1, 0)
+sparcc.adj <- 
 ```
 
 ```{r}
@@ -143,26 +143,12 @@ top_clusters <- order(cluster_sizes, decreasing = TRUE)[1:5]
 cluster_colors <- rainbow(5)
 
 # Color nodes based on cluster membership
-V(net)$color <- "gray"  # Default color for smaller clusters
-for (i in 1:5) {
-  cluster_indices <- which(membership == top_clusters[i])
-  if (length(cluster_indices) > 0) {
-    V(net)$color[cluster_indices] <- cluster_colors[i]
-  }
-}
+
 
 # Calculate hub scores for keystone taxa identification
 net_hs <- hub_score(net)$vector
 
 # Highlight keystone taxa by increasing their size
-V(net)$size <- 5  # Default size
-for (i in 1:5) {
-  cluster_indices <- which(membership == top_clusters[i])
-  if (length(cluster_indices) > 0) {
-    keystone_node <- cluster_indices[which.max(net_hs[cluster_indices])]
-    V(net)$size[keystone_node] <- 10  # Double the size for keystone taxa
-  }
-}
 
 # Plot the graph to visualize the node sizes
 plot(net, vertex.color = V(net)$color, vertex.size = V(net)$size)
